@@ -40,7 +40,9 @@ gulp.task('serve', ['js', 'sass'], () => {
     proxy: 'http://localhost:3000',
     port: 8000,
     files: ['public/**/*.*'],
-    reloadDelay: 500
+    reloadDelay: 500,
+    notify: false,
+    open: false
   });
 
   return nodemon({ script: 'index.js'})
