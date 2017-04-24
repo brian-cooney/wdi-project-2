@@ -1,20 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/', (req, res) => res.render('statics/home'));
-
-
-
-
-
+router.get('/', (req, res) => res.render('index'));
 
 module.exports = router;
-
-
-
-
-
-
 
 
 // const router        = require('express').Router();
@@ -23,28 +12,29 @@ module.exports = router;
 // const statics       = require('../controllers/statics');
 // const sessions      = require('../controllers/sessions');
 // const registrations = require('../controllers/registrations');
-// const films         = require('../controllers/films');
+// const podcasts      = require('../controllers/podcasts');
 // const comments      = require('../controllers/comments');
+//
 //
 // router.route('/')
 //   .get(statics.index);
+
+// router.route('/podcasts')
+//   .get(podcasts.index)
+//   .post(podcasts.create);
+
+// router.route('/podcasts/new')
+//   .get(podcasts.new);
 //
-// router.route('/films')
-//   .get(films.index)
-//   .post(films.create);
+// router.route('/podcasts/:id')
+//   .get(podcasts.show)
+//   .put(podcasts.update)
+//   .delete(podcasts.delete);
 //
-// router.route('/films/new')
-//   .get(films.new);
+// router.route('/podcasts/:id/edit')
+//   .get(podcasts.edit);
 //
-// router.route('/films/:id')
-//   .get(films.show)
-//   .put(films.update)
-//   .delete(films.delete);
-//
-// router.route('/films/:id/edit')
-//   .get(films.edit);
-//
-// router.route('/films/:id/comments')
+// router.route('/podcasts/:id/comments')
 //   .post(comments.create);
 //
 // router.route('/register')
@@ -54,5 +44,5 @@ module.exports = router;
 // router.route('/login')
 //   .get(sessions.new)
 //   .post(sessions.create);
-//
+
 // module.exports = router;
