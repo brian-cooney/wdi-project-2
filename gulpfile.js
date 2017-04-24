@@ -41,7 +41,6 @@ gulp.task('serve', ['js', 'sass'], () => {
     port: 8000,
     files: ['public/**/*.*'],
     reloadDelay: 500,
-    //Turn off browser sync display
     notify: false,
     open: false
   });
