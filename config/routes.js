@@ -6,6 +6,7 @@ const sessions      = require('../controllers/sessions');
 const registrations = require('../controllers/registrations');
 const podcasts      = require('../controllers/podcasts');
 
+
 function secureRoute(req, res, next) {
   if (!req.session.userId) {
     return req.session.regenerate(() => {
@@ -30,7 +31,8 @@ router.route('/podcasts')
 
 
 router.route('/podcasts/new')
-.get(secureRoute, podcasts.new);
+.get(secureRoute, podcasts.new)
+.get(podcasts.new);
 
 
 router.route('/podcasts/:id')

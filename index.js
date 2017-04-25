@@ -1,15 +1,15 @@
 // require modules
-const express        = require('express');
-const morgan         = require('morgan');
-const expressLayouts = require('express-ejs-layouts');
-const bodyParser     = require('body-parser');
-const methodOverride = require('method-override');
-const mongoose       = require('mongoose');
-mongoose.Promise     = require('bluebird');
-const routes         = require('./config/routes');
-const User           = require('./models/user');
-const session        = require('express-session');
-const flash          = require('express-flash');
+const express           = require('express');
+const morgan            = require('morgan');
+const expressEjsLayouts = require('express-ejs-layouts');
+const bodyParser        = require('body-parser');
+const methodOverride    = require('method-override');
+const mongoose          = require('mongoose');
+mongoose.Promise        = require('bluebird');
+const routes            = require('./config/routes');
+const User              = require('./models/user');
+const session           = require('express-session');
+const flash             = require('express-flash');
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 const env = require('./config/env');
@@ -24,9 +24,8 @@ mongoose.connect(env.db);
 
 // middleware
 app.use(morgan('dev'));
-app.use(expressLayouts);
-app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressEjsLayouts);
 
 app.use(methodOverride(function (req) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -77,3 +76,5 @@ app.use((req, res, next) => {
 
 app.use(routes);
 app.listen(env.port, () => console.log(`Express is listening on port ${env.port}`));
+
+app.use(express.static(`${__dirname}/public`));

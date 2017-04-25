@@ -20,10 +20,12 @@ function podcastsCreate(req, res, next) {
 
 function podcastsShow(req, res, next) {
   Podcast
-    .findById(req.params.id)
-    .populate('director cast')
-    .then((podcast) => {
-      if(!podcast) return res.status(404).render('statics/404');
+    .findById(req.params.Objectid)
+    .exec()
+    .then(podcast => {
+      if(!podcast) {
+        return res.status(404).render('statics/404');
+      }
       res.render('podcasts/show', { podcast });
     })
     .catch(next);
