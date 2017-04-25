@@ -42,6 +42,12 @@ app.use(session({
   saveUninitialized: false
 }));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'ssh it\'s a secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
 app.use(flash());
 
 app.use((req, res, next) => {
