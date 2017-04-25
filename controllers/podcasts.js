@@ -1,6 +1,4 @@
 const Podcast = require('../models/podcast');
-// const Comment = require('../models/comment');
-
 
 function podcastsIndex(req, res, next) {
   Podcast
@@ -10,7 +8,6 @@ function podcastsIndex(req, res, next) {
 }
 
 function podcastsNew(req, res) {
-  // res.render('podcasts/new', { genres });
   res.render('podcasts/new');
 }
 
@@ -24,17 +21,9 @@ function podcastsCreate(req, res, next) {
 function podcastsShow(req, res, next) {
   Podcast
     .findById(req.params.id)
-    .populate('comments.user')
-    .exec()
-    .then(podcast => {
-      /*
-        Create an error to pass to the generic error handler
-      */
-      if (!podcast) {
-        const err = new Error('Podcast not found');
-        err.status = 404;
-        throw err;
-      }
+    .populate('director cast')
+    .then((podcast) => {
+      if(!podcast) return res.status(404).render('statics/404');
       res.render('podcasts/show', { podcast });
     })
     .catch(next);
@@ -44,14 +33,8 @@ function podcastsEdit(req, res, next) {
   Podcast
     .findById(req.params.id)
     .then((podcast) => {
-      if (!podcast) {
-        const err = new Error('Podcast not found');
-        err.status = 404;
-        throw err;
-      }
-
-      res.render('podcasts/edit', { podcast });
-      // res.render('podcasts/edit', { podcast, genres });
+      if(!podcast) return res.status(404).render('statics/404');
+      res.render('podcasts/edit', { podcast});
     })
     .catch(next);
 }
@@ -60,11 +43,7 @@ function podcastsUpdate(req, res, next) {
   Podcast
     .findById(req.params.id)
     .then((podcast) => {
-      if (!podcast) {
-        const err = new Error('Podcast not found');
-        err.status = 404;
-        throw err;
-      }
+      if(!podcast) return res.status(404).render('statics/404');
 
       for(const field in req.body) {
         podcast[field] = req.body[field];
@@ -80,12 +59,7 @@ function podcastsDelete(req, res, next) {
   Podcast
     .findById(req.params.id)
     .then((podcast) => {
-      if (!podcast) {
-        const err = new Error('Podcast not found');
-        err.status = 404;
-        throw err;
-      }
-
+      if(!podcast) return res.status(404).render('statics/404');
       return podcast.remove();
     })
     .then(() => res.redirect('/podcasts'))

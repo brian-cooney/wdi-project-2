@@ -1,25 +1,26 @@
+<h1>Register</h1>
 
+<% if (locals.message) { %>
+  <p><%= message %></p>
+<% } %>
 
-<div class="container">
-  <h1>Register</h1>
-  <form method="POST" action="/login">
-    <div class="form-group">
-      <label for="username">User Name</label>
-      <input type="text" name="email" id="email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="password">Confirm Password</label>
-      <input type="password" name="password" id="password" class="form-control">
-    </div>
+<form method="POST" action="/register">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="passwordConfirmation">Password Confirmation</label>
+    <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control">
+  </div>
 
-    <button class="btn btn-primary">Submit</button>
-  </form>
-</div>
+  <button class="btn btn-primary">Register</button>
+</form>
