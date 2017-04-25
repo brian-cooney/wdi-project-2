@@ -1,0 +1,14 @@
+<h1>Add Podcasts</h1>
+
+<form method="post" action="/podcasts/<%= podcast._id %>">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" value="<%= podcast.name %>">
+
+  <label for="description">Description</label>
+  <textarea id="description" name="description"><%= podcast.description %></textarea>
+
+  <label for="image">Image</label>
+  <input type="text" id="image" name="image" value="<%= podcast.image %>">
+
+  <input type="submit" value="Submit">
+</form>

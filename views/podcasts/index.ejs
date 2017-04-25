@@ -1,6 +1,9 @@
 <h1>Podcasts</h1>
 <ul>
-  <% podcasts.forEach(park => { %>
-    <li><%= podcasts.name %></li>
+  <% podcasts.forEach(podcast => { %>
+    <li>
+      <img src="<%= podcast.image %>">
+      <h4><%= podcast.name %></h4>
+    </li>
   <% }); %>
 </ul>

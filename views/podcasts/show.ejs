@@ -1,3 +1,10 @@
 <h1><%= podcast.name %></h1>
-<img src="<%= podcast.image %>" alt="<%= podcast.name %>'s image">
-<p><%= podcast.description %></p>
+<div class="show-podcast">
+  <p><%= podcast.description %></p>
+  <form method="post" action="/podcasts/<%= podcast.id %>">
+    <input type="hidden" name="_method" value="delete">
+    <input class="delete"type="submit" value="Delete">
+  </form>
+  <img src="<%= podcast.image %>" alt="<%= podcast.name %>'s image">
+  <a class="button" href="/podcasts/<%= podcast._id %>/edit">Edit</a>
+</div>

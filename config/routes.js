@@ -41,7 +41,9 @@ router.route('/podcasts/:id')
 .delete(secureRoute, podcasts.delete);
 
 router.route('/podcasts/:id/edit')
+.get(podcasts.edit)
 .get(secureRoute, podcasts.edit);
+
 
 router.route('/register')
 .get(registrations.new)
