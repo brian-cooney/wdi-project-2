@@ -1,10 +1,17 @@
-<h1><%= podcast.name %></h1>
-<div class="show-podcast">
-  <p><%= podcast.description %></p>
-  <form method="post" action="/podcasts/<%= podcast.id %>">
-    <input type="hidden" name="_method" value="delete">
-    <input class="delete"type="submit" value="Delete">
-  </form>
-  <img src="<%= podcast.image %>" alt="<%= podcast.name %>'s image">
-  <a class="button" href="/podcasts/<%= podcast._id %>/edit">Edit</a>
+<h2> <%= podcast.title %> </h2>
+<p> <%= podcast.description %> </p>
+<img src ="<%= artist.image %>" alt="<%= artist.artist %>'s image'">
+
+<a class="btn btn-primary edit" href="/artists/<%= artist._id %>/edit">Edit</a>
+<form action="/podcasts/<%= podcast.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-danger delete">Delete</button>
+</form>
+
+<form action="/podcasts/<%= podcast.id %>" method="POST">
+<div>
+  <label for="body">Please leave a comment</label>
+  <textarea name="body" id="body" rows="8" cols="80"></textarea>
 </div>
+  <input type="submit" class="btn">
+</form>

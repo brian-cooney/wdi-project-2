@@ -1,10 +1,11 @@
 const Podcast = require('../models/podcast');
+const rp      = require('request-promise');
 
 function podcastsIndex(req, res, next) {
   Podcast
-  .find()
-  .then((podcasts) => res.render('podcasts/index', { podcasts }))
-  .catch(next);
+    .find()
+    .then((podcasts) => res.render('podcasts/index', { podcasts }))
+    .catch(next);
 }
 
 function podcastsNew(req, res) {
@@ -12,10 +13,13 @@ function podcastsNew(req, res) {
 }
 
 function podcastsCreate(req, res, next) {
-  Podcast
-  .create(req.body)
-  .then(() => res.redirect('/podcasts'))
-  .catch(next);
+  const podcast = new Podcast(req.body);
+  podcast.user = res.locals.user._id;
+
+  podcast
+    .save()
+    .then(() => res.redirect('/podcasts'))
+    .catch(next);
 }
 
 function podcastsShow(req, res, next) {
@@ -47,28 +51,40 @@ function podcastsEdit(req, res, next) {
 function podcastsUpdate(req, res, next) {
   Podcast
   .findById(req.params.id)
-  .then((podcast) => {
-    if(!podcast) return res.status(404).render('statics/404');
-
+  .exec()
+  .then(podcast => {
+    if(!podcast) {
+      return res.status(404).render('statics/404');
+    }
     for(const field in req.body) {
       podcast[field] = req.body[field];
     }
-
     return podcast.save();
   })
-  .then((podcast) => res.redirect(`/podcasts/${podcast.id}`))
+  .then(podcast => {
+    if (!podcast) {
+      return res.redirect(`/podcasts/${podcast.id}`);
+    }
+    return res.render('podcasts/show', { podcast });
+  })
   .catch(next);
 }
 
 function podcastsDelete(req, res, next) {
   Podcast
   .findById(req.params.id)
-  .then((podcast) => {
-    if(!podcast) return res.status(404).render('statics/404');
-    return podcast.remove();
+  .then(() => {
+    return res.redirect('/podcasts');
   })
-  .then(() => res.redirect('/podcasts'))
   .catch(next);
+}
+
+function getPodcasts(req, res) {
+  rp(`https://itunes.apple.com/search?term=${req.params.query}&media=podcast&country=gb&limit=100`)
+  .then(response => {
+    const data = JSON.parse(response);
+    res.json(data);
+  });
 }
 
 module.exports = {
@@ -78,5 +94,6 @@ module.exports = {
   show: podcastsShow,
   edit: podcastsEdit,
   update: podcastsUpdate,
-  delete: podcastsDelete
+  delete: podcastsDelete,
+  get: getPodcasts
 };

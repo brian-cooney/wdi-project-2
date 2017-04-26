@@ -1,0 +1,85 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/briancooney/.nvm/versions/node/v7.7.3/bin/node',
+1 verbose cli   '/Users/briancooney/.nvm/versions/node/v7.7.3/bin/npm',
+1 verbose cli   'i',
+1 verbose cli   'audiosearch-client-node',
+1 verbose cli   '--save' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.3
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData audiosearch-client-node
+8 silly fetchNamedPackageData audiosearch-client-node
+9 silly mapToRegistry name audiosearch-client-node
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'audiosearch-client-node',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'audiosearch-client-node',
+12 silly mapToRegistry   name: 'audiosearch-client-node',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri https://registry.npmjs.org/audiosearch-client-node
+14 verbose request uri https://registry.npmjs.org/audiosearch-client-node
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 9:52:50 AM
+17 verbose request id 6215aecc58539304
+18 http request GET https://registry.npmjs.org/audiosearch-client-node
+19 http 200 https://registry.npmjs.org/audiosearch-client-node
+20 verbose headers { server: 'nginx/1.10.1',
+20 verbose headers   'content-type': 'application/json',
+20 verbose headers   'last-modified': 'Mon, 05 Oct 2015 01:45:11 GMT',
+20 verbose headers   etag: 'W/"5611d627-1bd"',
+20 verbose headers   'content-encoding': 'gzip',
+20 verbose headers   'cache-control': 'max-age=300',
+20 verbose headers   'content-length': '258',
+20 verbose headers   'accept-ranges': 'bytes',
+20 verbose headers   date: 'Wed, 26 Apr 2017 08:52:48 GMT',
+20 verbose headers   via: '1.1 varnish',
+20 verbose headers   age: '0',
+20 verbose headers   connection: 'keep-alive',
+20 verbose headers   'x-served-by': 'cache-lhr6329-LHR',
+20 verbose headers   'x-cache': 'MISS',
+20 verbose headers   'x-cache-hits': '0',
+20 verbose headers   'x-timer': 'S1493196769.549347,VS0,VE18',
+20 verbose headers   vary: 'Accept-Encoding' }
+21 silly get cb [ 200,
+21 silly get   { server: 'nginx/1.10.1',
+21 silly get     'content-type': 'application/json',
+21 silly get     'last-modified': 'Mon, 05 Oct 2015 01:45:11 GMT',
+21 silly get     etag: 'W/"5611d627-1bd"',
+21 silly get     'content-encoding': 'gzip',
+21 silly get     'cache-control': 'max-age=300',
+21 silly get     'content-length': '258',
+21 silly get     'accept-ranges': 'bytes',
+21 silly get     date: 'Wed, 26 Apr 2017 08:52:48 GMT',
+21 silly get     via: '1.1 varnish',
+21 silly get     age: '0',
+21 silly get     connection: 'keep-alive',
+21 silly get     'x-served-by': 'cache-lhr6329-LHR',
+21 silly get     'x-cache': 'MISS',
+21 silly get     'x-cache-hits': '0',
+21 silly get     'x-timer': 'S1493196769.549347,VS0,VE18',
+21 silly get     vary: 'Accept-Encoding' } ]
+22 verbose get saving audiosearch-client-node to /Users/briancooney/.npm/registry.npmjs.org/audiosearch-client-node/.cache.json
+23 verbose correctMkdir /Users/briancooney/.npm correctMkdir not in flight; initializing
+24 verbose stack TypeError: Cannot convert undefined or null to object
+24 verbose stack     at Function.keys (<anonymous>)
+24 verbose stack     at pickVersionFromRegistryDocument (/Users/briancooney/.nvm/versions/node/v7.7.3/lib/node_modules/npm/lib/fetch-package-metadata.js:126:29)
+24 verbose stack     at /Users/briancooney/.nvm/versions/node/v7.7.3/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+24 verbose stack     at /Users/briancooney/.nvm/versions/node/v7.7.3/lib/node_modules/npm/lib/utils/pulse-till-done.js:20:8
+24 verbose stack     at saved (/Users/briancooney/.nvm/versions/node/v7.7.3/lib/node_modules/npm/lib/cache/caching-client.js:174:7)
+24 verbose stack     at /Users/briancooney/.nvm/versions/node/v7.7.3/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:261:18
+24 verbose stack     at FSReqWrap.oncomplete (fs.js:114:15)
+25 verbose cwd /Users/briancooney/development/wdi-project-2
+26 error Darwin 16.4.0
+27 error argv "/Users/briancooney/.nvm/versions/node/v7.7.3/bin/node" "/Users/briancooney/.nvm/versions/node/v7.7.3/bin/npm" "i" "audiosearch-client-node" "--save"
+28 error node v7.7.3
+29 error npm  v4.1.2
+30 error Cannot convert undefined or null to object
+31 error If you need help, you may report this error at:
+31 error     <https://github.com/npm/npm/issues>
+32 verbose exit [ 1, true ]

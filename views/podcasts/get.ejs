@@ -1,0 +1,9 @@
+<ul>
+  <% data.results.forEach(podcast => { %>
+    <li>
+      <img src="<%= podcast.artworkUrl600 %>">
+      <h4><%= podcast.trackName %></h4>
+      <p><%= podcast.genreIds %></p>
+    </li>
+  <% }); %>
+</ul>
