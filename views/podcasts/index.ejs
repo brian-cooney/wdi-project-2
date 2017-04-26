@@ -1,9 +1,9 @@
 <h1>Podcasts</h1>
-<ul>
+<div class"row">
   <% podcasts.forEach(podcast => { %>
-    <li>
+      <div class="col-md-3">
       <img src="<%= podcast.image %>">
       <h4><%= podcast.name %></h4>
-    </li>
+  </div>
   <% }); %>
-</ul>
+</div>

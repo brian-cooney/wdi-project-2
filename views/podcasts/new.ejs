@@ -1,11 +1,17 @@
-<h1>Seach Podcasts</h1>
+<h3>Seach Podcasts</h3>
 
-<form class="search-podcasts">
-  <input type="search" name="" value="" placeholder="e.g serial">
-  <input type="submit" name="" value="Search Podcast">
+
+<form class="form-inline search-podcasts">
+  <div class="form-group">
+  </div>
+  <div class="form-group mx-sm-3">
+    <label type="search" class="sr-only">Password</label>
+    <input type="search" class="form-control" placeholder="e.g full stack">
+  </div>
+  <button type="submit" class="btn btn-primary" value="Search Podcast">Search</button>
 </form>
 
-<ul class="podcasts-search-results"></ul>
+<ul class="podcasts-search-results row"></ul>
 
 <%# <form method="post" action="/podcasts">
   <label for="name">Name</label>

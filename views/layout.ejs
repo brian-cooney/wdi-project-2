@@ -16,38 +16,32 @@
   <script src="/js/client.js" charset="utf-8"></script>
 </head>
 <body>
+
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="/">Tech Weekly</a>
-
+    <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/597931-200.png" width="40" height="40" alt="">
+    <a class="navbar-brand" href="/">Tech Cast</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/podcasts">podcasts</a>
+          <a class="nav-link" href="/podcasts">Podcasts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/podcasts/new">Add Podcast</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Search</a>
-        </li>
-        <li class="nav-item">
+        <li class="nav-item-right">
           <a class="btn btn-outline-success my-2 my-sm-0" href="/register">Register</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item-right">
           <a class="btn btn-outline-success my-2 my-sm-0" href="/login">Login</a>
         </li>
       </ul>
     </div>
   </nav>
-
-  <main class="container">
-    <% for (const type in messages) { %>
-      <p class="alert alert-<%= type %>"><%= messages[type] %></p>
-    <% } %>
+  <div class="container">
     <%- body %>
-  </main>
+  </div>
 </body>
 </html>

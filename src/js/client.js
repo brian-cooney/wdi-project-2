@@ -12,9 +12,9 @@ function getTopPodcasts() {
   .done(data => {
     const json = JSON.parse(data);
     json.feed.entry.forEach(podcast => {
-      $(`<li>
+      $(`<div =class"col-3">
           <img src="${podcast['im:image'][2].label}">
-        </li>`).appendTo('.podcast-container');
+        </div>`).appendTo('.podcast-container');
     });
   });
 }
@@ -31,12 +31,12 @@ function searchForPodcasts(e) {
 
       data.results.forEach(podcast => {
         $(`
-          <li class="result" data-feedurl="${podcast.feedUrl}">
+          <div class=" col-3 result" data-feedurl="${podcast.feedUrl}">
             <img src="${podcast.artworkUrl100}">
             <h4>${podcast.collectionName}</h4>
             <h6>${podcast.artistName}</h6>
             <button class="btn btn-success">Add Podcast</button>
-          </li>
+          </div>
           `).appendTo('.podcasts-search-results');
       });
     });
