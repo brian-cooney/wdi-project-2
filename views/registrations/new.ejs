@@ -1,10 +1,10 @@
-<h1>Register</h1>
 
 <% if (locals.message) { %>
   <p><%= message %></p>
 <% } %>
 
-<form method="POST" action="/register">
+<form class="register" method="POST" action="/register">
+  <h2>Register</h2>
   <div class="form-group">
     <label for="username">Username</label>
     <input type="text" name="username" id="username" class="form-control">
@@ -21,6 +21,5 @@
     <label for="passwordConfirmation">Password Confirmation</label>
     <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control">
   </div>
-
   <button class="btn btn-primary">Register</button>
 </form>
