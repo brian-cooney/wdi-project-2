@@ -20,8 +20,8 @@ function getTopPodcasts() {
 }
 
 function searchForPodcasts(e) {
-  $('.podcasts-search-results').empty();
   e.preventDefault();
+  $('.podcasts-search-results').empty();
   const query = $(this).find('input[type=search]').val();
 
   $
