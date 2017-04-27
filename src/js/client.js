@@ -3,7 +3,7 @@ $(init);
 function init() {
   if($('.podcast-container').length !== 0) getTopPodcasts();
   $('.search-podcasts').on('submit', searchForPodcasts);
-  $('.podcasts-search-results').on('click', 'li button', getPodcastData);
+  $('.podcasts-search-results').on('click', 'div', postPodcastToPlaylist);
 }
 
 function getTopPodcasts() {
@@ -13,8 +13,8 @@ function getTopPodcasts() {
     const json = JSON.parse(data);
     json.feed.entry.forEach(podcast => {
       $(`<div =class"col-3">
-          <img src="${podcast['im:image'][2].label}">
-        </div>`).appendTo('.podcast-container');
+      <img src="${podcast['im:image'][2].label}">
+      </div>`).appendTo('.podcast-container');
     });
   });
 }
@@ -25,36 +25,64 @@ function searchForPodcasts(e) {
   const query = $(this).find('input[type=search]').val();
 
   $
-    .get(`http://localhost:3000/podcasts/get/${query}`)
-    .done(data => {
-      $(this).find('input[type=search]').val('');
+  .get(`http://localhost:3000/podcasts/get/${query}`)
+  .done(data => {
+    $(this).find('input[type=search]').val('');
 
-      data.results.forEach(podcast => {
-        $(`
-          <div class="container" data-feedurl="${podcast.feedUrl}">
-            <img src="${podcast.artworkUrl100}">
-            <h4>${podcast.collectionName}</h4>
-            <h6>${podcast.artistName}</h6>
-            <button class="btn btn-success add-podcast">Add Podcast</button>
-          </div>
-          `).appendTo('.podcasts-search-results');
-      });
+    data.results.forEach(podcast => {
+      $(`
+        <div
+          class="podcast-result"
+          data-feedurl="${podcast.feedUrl}"
+          data-artwork="${podcast.artworkUrl600}"
+          data-collection="${podcast.collectionName}"
+          data-artist="${podcast.artistName}">
+            <img src="${podcast.artworkUrl600}">
+        </div>
+        `).appendTo('.podcasts-search-results');
     });
+
+    $('.podcasts-search-results').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 3,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  });
 }
 
-function getPodcastData() {
+function postPodcastToPlaylist() {
+  console.log('init');
   const podcastData = {
-    title: $(this).parent().find('h4').text().split('(')[0],
-    artist: $(this).parent().find('h6').text(),
-    image: $(this).parent().find('img').attr('src'),
-    feedUrl: $(this).parent().attr('data-feedurl')
+    title: $(this).attr('data-collection').split('(')[0],
+    artist: $(this).attr('data-artist'),
+    image: $(this).attr('data-artwork'),
+    feedUrl: $(this).attr('data-feedurl')
   };
 
-  $.post('http://localhost:3000/podcasts', podcastData);
-}
-
-
-function addPodcastToPlaylist() {
-  $('.add-podcast').on('click');
-  console.log('clicked button');
+  $
+    .post('http://localhost:3000/podcasts', podcastData)
+    .done(() => {
+      $(this).find('img').css('opacity', '.3');
+      $('<span>Added to Playlist</span>').appendTo($(this));
+    });
 }

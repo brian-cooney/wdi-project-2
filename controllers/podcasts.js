@@ -3,9 +3,9 @@ const rp      = require('request-promise');
 
 function podcastsIndex(req, res, next) {
   Podcast
-    .find()
-    .then((podcasts) => res.render('podcasts/index', { podcasts }))
-    .catch(next);
+  .find()
+  .then((podcasts) => res.render('podcasts/index', { podcasts }))
+  .catch(next);
 }
 
 function podcastsNew(req, res) {
@@ -13,13 +13,17 @@ function podcastsNew(req, res) {
 }
 
 function podcastsCreate(req, res, next) {
-  const podcast = new Podcast(req.body);
-  podcast.user = res.locals.user._id;
+  Podcast.findOne({ user: res.locals.user._id, title: req.body.title }).exec()
+  .then(podcast => {
+    if (podcast) return res.redirect('/podcasts');
 
-  podcast
-    .save()
-    .then(() => res.redirect('/podcasts'))
-    .catch(next);
+    podcast = new Podcast(req.body);
+    podcast.user = res.locals.user._id;
+
+    return podcast.save();
+  })
+  .then(() => res.redirect('/podcasts'))
+  .catch(next);
 }
 
 function podcastsShow(req, res, next) {
