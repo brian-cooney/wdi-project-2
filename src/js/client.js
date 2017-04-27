@@ -31,11 +31,11 @@ function searchForPodcasts(e) {
 
       data.results.forEach(podcast => {
         $(`
-          <div class=" col-3 result" data-feedurl="${podcast.feedUrl}">
+          <div class="container" data-feedurl="${podcast.feedUrl}">
             <img src="${podcast.artworkUrl100}">
             <h4>${podcast.collectionName}</h4>
             <h6>${podcast.artistName}</h6>
-            <button class="btn btn-success">Add Podcast</button>
+            <button class="btn btn-success add-podcast">Add Podcast</button>
           </div>
           `).appendTo('.podcasts-search-results');
       });
@@ -51,4 +51,10 @@ function getPodcastData() {
   };
 
   $.post('http://localhost:3000/podcasts', podcastData);
+}
+
+
+function addPodcastToPlaylist() {
+  $('.add-podcast').on('click');
+  console.log('clicked button');
 }
