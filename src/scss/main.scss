@@ -29,6 +29,7 @@ background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, F
   max-width: 460px;
   margin: 0 auto;
   padding-top: 100px;
+  padding-bottom: 30px;
 }
 
 img {
@@ -46,4 +47,14 @@ img {
 
 .welcome-message {
    text-align: center;
+}
+
+.podcast-container {
+  border: 50px;
+}
+
+.results {
+  display: block;
+  margin: 0 auto;
+  background: grey;
 }
