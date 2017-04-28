@@ -1,9 +1,7 @@
 # wdi-project-2
 
-This is my second project for WDI London
-
 ### Introduction
-**Dev.cast** is a simple full stack web app where users can create a playlist of their favourite technology podcasts. Having recently discovered the joys of listening to podcasts on the work commute and felt it would be a good theme for this project brief. This is **second project** on the *Web Development Immersive* course at **General Assembly, London** using **node.js & express**. A hosted version of **Dev.cast** can be found [here] (https://frozen-basin-59637.herokuapp.com/)
+**Dev.cast** is a simple full stack web app where users can create a playlist of their favourite technology podcasts. Having recently discovered the joys of listening to podcasts on the work commute, I decided it would be a good theme to fit the project brief. This is **second project** on the *Web Development Immersive* course at **General Assembly, London** using **node.js & express**. A hosted version of **Dev.cast** can be found [here] (https://frozen-basin-59637.herokuapp.com/)
 The code can be viewed [here] (https://github.com/brian-cooney/wdi-project-2)
 
 
